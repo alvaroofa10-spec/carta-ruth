@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ruth 💕✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Georgia', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* CORAZONES FLOTANTES */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 18px;
+            animation: float 6s infinite linear;
+            color: #ff69b4;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) rotate(90deg) scale(1); }
+            90% { opacity: 1; transform: translateY(-10vh) rotate(270deg) scale(1); }
+            100% { transform: translateY(-100px) rotate(360deg) scale(0); opacity: 0; }
+        }
+
+        /* ESTILO GENERAL DE PÁGINAS */
+        .pagina {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px 30px;
+            border-radius: 35px;
+            box-shadow: 0 25px 50px rgba(255, 107, 157, 0.3);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            animation: bounceIn 1.2s ease-out;
+            max-width: 550px;
+            width: 100%;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .titulo-bienvenida {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            animation: wiggle 2s infinite;
+            line-height: 1;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .btn-siguiente {
+            background: linear-gradient(45deg, #ff9ff3, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .btn-siguiente:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.6);
+        }
+
+        /* VARIACIONES DE PÁGINA */
+        .color-advertencia { background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); }
+        .titulo-rojo { color: #d63031; font-size: 3.5em; margin-bottom: 20px; }
+
+        /* CARTA Y TEXTO */
+        .carta-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 40px;
+            max-width: 800px;
+            box-shadow: 0 30px 70px rgba(255, 107, 157, 0.4);
+        }
+
+        .texto-carta {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #444;
+            max-height: 60vh;
+            overflow-y: auto;
+            text-align: left;
+            padding: 20px;
+            background: #fff;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* ESTILO CANCIÓN FINAL */
+        .link-cancion {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ff6b9d;
+            font-weight: bold;
+            border: 2px dashed #ff9ff3;
+            transition: 0.3s;
+        }
+        .link-cancion:hover { background: #fff0f5; }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts"></div>
+
+    <div class="pagina" id="pagina1">
+        <div class="container">
+            <h1 class="titulo-bienvenida">¡Bienvenida Ruth! 💖❤️</h1>
+            <button class="btn-siguiente" onclick="mostrarPagina('pagina2')">Entrar →</button>
+        </div>
+    </div>
+
+    <div class="pagina color-advertencia" id="pagina2" style="display: none;">
+        <div class="container">
+            <h1 class="titulo-rojo">⚠️ ¡Atención!</h1>
+            <p style="font-size: 1.4em; color: #444; margin-bottom: 30px;">
+                Antes de seguir, te pido un favor... <br><br>
+                <b>Leé esto cuando estés vos sola</b>, sin tus amigas.
+            </p>
+            <button class="btn-siguiente" onclick="mostrarPagina('pagina3')">estoy sola </button>
+        </div>
+    </div>
+
+    <div class="pagina" id="pagina3" style="display: none;">
+        <div class="container">
+            <h1 class="titulo-bienvenida" style="font-size: 3em;">🎁 ¡SORPRESA!</h1>
+            <p style="font-size: 1.4em; margin-bottom: 30px;">Preparé algo muy especial para vos 💞</p>
+            <button class="btn-siguiente" onclick="mostrarPagina('pagina4')">Ver regalo ✨</button>
+        </div>
+    </div>
+
+    <div class="pagina" id="pagina4" style="display: none;">
+        <div class="carta-container">
+            <h1 style="color: #ff6b9d; margin-bottom: 20px;">💌 Con mucho cariño para vos 💌</h1>
+            
+            <div class="texto-carta">
+                <p>Ruth,</p><br>
+
+<p>Hay pensamientos que uno intenta guardar en silencio, pero llega un momento en el que el corazón pide soltar todo a gritos, o al menos escribirlos. Y esta carta nace exactamente de eso.</p><br>
+
+<p>Desde que te vi  hay algo que cambió dentro de mí. No fue algo escandaloso ni inmediato, fue más bien algo silencioso, como una sensación que empezó pequeña y que con el tiempo fue creciendo hasta ocupar más espacio del que esperaba.</p><br>
+<p>Hay algo en vos que me atrapa de una manera difícil de explicar, capaz  es tu forma de ser o esa extraña sensación de paz que me transmitís, tu tranquilidad, tu sonrisa, esos ojos hermosos o simplemente esa mezcla única de todo lo que sos, Lo cierto es que desde hace un tiempo me descubrí pensando en vos más de lo normal, como si tu nombre se hubiera instalado en algún lugar de mi mente.</p><br>
+<p>Puede parecer extraño, porque no hemos compartido prácticamente nada, pero aun así despertaste en mí algo muy real, a veces basta con ver a una persona para darse cuenta de que hay algo especial ahí, algo que vale la pena descubrir con calma, No te voy a negar que yo pensaba que todo eso del amor a primera vista, o de querer a alguien sin conocerle, era ridículo, o algo que uno mismo se inventaba, 
+    pero desde que te conocí un poco más me di cuenta de que es real, fuerte y quizá la manera más pura de querer, sin hablar, sin verse, sin tocarse y sin esperar nada a cambio</p><br>
+<p>Por eso me gusta dejarte pequeños detalles o estas notas. No hago nada de esto por costumbre ni por simple romanticismo. Lo hago porque cuando alguien empieza a significar tanto, uno siente la necesidad de demostrar eso, aunque sea con gestos pequeños.</p><br>
+<p>La verdad es que me gustás, Ruth. Pero más que eso, me gusta la idea de poder conocerte más, de descubrir poco a poco quién sos realmente, qué cosas te hacen reír, qué sueños tenés y qué historias guarda tu corazón.</p><br>
+<p>No sé qué camino tomará todo esto con el tiempo, ni si nuestras historias algún día se cruzarán más de lo que ya lo hicieron. Pero sí sé algo con total seguridad: hay algo en vos que despertó en mí una admiración y cariño muy sincero.</p><br>
+<p>Y si algún día te preguntás por qué sigo apareciendo con estas pequeñas notas o detalles, la respuesta es sencilla</p><br>
+<p>porque hay personas que simplemente gustan</p><br>
+<p>y hay personas que, sin darse cuenta, se vuelven un pequeño delirio para el corazón.</p><br>
+<p>Y vos, Ruth, sos exactamente eso para mí.</p><br>
+<p>Y aunque quizás estas palabras parezcan muchas, en realidad siento que todavía se quedan cortas para explicar todo lo que pasa por mi cabeza cuando pienso en vos. A veces es curioso cómo alguien puede empezar a ocupar un lugar en la vida de otra persona sin hacer casi nada, simplemente siendo quien es. Hay presencias que se sienten distintas, que tienen algo que no se puede describir con facilidad, pero que uno reconoce en silencio.</p><br>
+<p>Quizá con el tiempo todo esto encuentre su propio rumbo, quizá terminemos conociéndonos más o quizá simplemente quede como una historia bonita que empezó con unas cuantas notas y pequeños detalles. Pero incluso si el tiempo decide tomar otro camino, creo que hay cosas que valen la pena decirlas cuando se sienten, porque guardarlas demasiado tiempo sería como negar algo que nació de manera sincera.</p><br>
+<p>A veces me pregunto cómo será la vida vista desde tus ojos, qué pensamientos pasan por tu mente cuando caminás, cuando te reís con alguien o cuando te quedás en silencio pensando en tus propias cosas. Son preguntas simples, pero nacen de esa curiosidad tranquila que aparece cuando alguien empieza a importarte un poco más de lo normal.</p><br>
+<p>No espero respuestas inmediatas ni gestos grandes, porque entiendo que cada historia tiene su propio ritmo y su propio tiempo. Algunas cosas necesitan crecer despacio para que realmente tengan sentido. Por eso prefiero que todo lo que pase entre nosotros sea natural, sin presión, sin expectativas imposibles, solo dejando que el tiempo y la vida hagan su parte.</p><br>
+<p>Pero mientras tanto, quería que supieras algo que para mí es muy claro, y es que desde que apareciste en mi vida de alguna manera, incluso con lo poco que hemos compartido, dejaste una pequeña marca en mis pensamientos y en mi forma de ver algunas cosas. Y hay algo bonito en eso, algo que me recuerda que todavía existen esas sensaciones simples que aparecen cuando alguien nos despierta curiosidad, admiración y un cariño que nace sin hacer ruido.</p><br>
+<p>Quizá algún día recordemos todo esto como el comienzo de algo, o quizá simplemente como un momento especial que apareció en el camino de nuestras vidas. Pero de cualquier manera, me alegra haber tenido el valor de escribirte estas palabras, porque a veces las cosas más sinceras son también las más simples.</p><br>
+<p>Con todo mi cariño para vos tomatito💖</p>
+            </div>
+
+            <div style="font-size: 1.4em; color: #c44569;">
+                Con todo mi corazón ❤️<br>
+                <span style="font-size: 1.6em;">Alvaro </span>
+            </div>
+            <br>
+            <button class="btn-siguiente" onclick="mostrarPagina('pagina5')">Tengo una cosa más... ✨</button>
+        </div>
+    </div>
+
+    <div class="pagina" id="pagina5" style="display: none;">
+        <div class="container">
+            <h1 class="titulo-bienvenida" style="font-size: 2.5em;">Es tuya esta cancion</h1>
+            <p style="font-size: 1.3em; color: #444; margin-bottom: 20px;">
+                Esta música es para vos, escuchala cuando puedas. 💕
+            </p>
+            
+            <a href="https://www.youtube.com/watch?v=Iiyp9rR9zko&t=22s" target="_blank" class="link-cancion">
+                🎵 Escuchar 🎵
+            </a>
+
+            <br><br>
+            <button class="btn-siguiente" style="font-size: 1em; padding: 10px 25px;" onclick="location.reload()">Volver al inicio</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrarPagina(id) {
+            const paginas = document.querySelectorAll('.pagina');
+            paginas.forEach(p => p.style.display = 'none');
+            const destino = document.getElementById(id);
+            destino.style.display = 'flex';
+            window.scrollTo(0,0);
+        }
+
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const icons = ['💖', '💕', '💗', '💝', '💘', '🌸', '✨'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 7000);
+        }
+        setInterval(createHeart, 250);
+    </script>
+</body>
+</html>
